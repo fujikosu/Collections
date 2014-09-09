@@ -41,7 +41,9 @@ public class View{
 	private JButton buttonOpenUpdate;
 	private JFrame listFrame;
 
-	
+	/**
+	 * Show main window
+	 */
 	public View() {
 		mainFrame = new JFrame("Administration of person data");
 		mainFrame.setSize(300,270);
@@ -86,6 +88,11 @@ public class View{
 		mainFrame.setVisible(true);
 	}
 	
+	/**
+	 * Show some caution about something
+	 * this is used for indicating lack of data
+	 * @param str the statement you want to show
+	 */
 	public static void caution(String str){
 		JFrame cautionFrame = new JFrame("Caution");
 		cautionFrame.setSize(300,200);
@@ -96,6 +103,11 @@ public class View{
 		cautionFrame.setVisible(true);
 	}
 	
+	/**
+	 * When show button is pushed, this is invoked
+	 * This shows data in mysql or textfile as list
+	 * @param personList array list of student data
+	 */
 	//TODO get the data from JList and look for the way to get the index and value
 	public void showResult(ArrayList<Student> personList) {
 		listFrame = new JFrame();
@@ -121,6 +133,10 @@ public class View{
 		listFrame.setVisible(true);
 	}
 	
+	/**
+	 * Show a window with text boxes to change one student data
+	 * @param student data which will be changed
+	 */
 	public void updateWindow(Student student){
 		JFrame updateFrame;
 		updateFrame = new JFrame("Update");
@@ -175,7 +191,10 @@ public class View{
 		this.listFrame = listFrame;
 	}
 
-
+	/**
+	 * make model for JList from ArrayList which includes all atudents data
+	 * @param personList
+	 */
 	public void setList(ArrayList<Student> personList) {
 		model = new DefaultListModel<>();
 		for(Student person : personList){

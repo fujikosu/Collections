@@ -11,7 +11,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * 
+ * Model of file system
+ * When you put File for an argument, text file is used for storing all students data
  * @author TEST
  *
  */
@@ -19,7 +20,7 @@ public class FileIODAO implements DAO {
 	private BufferedWriter bw;
 
 	/**
-	 * 
+	 * Check if text file for storing data already exists or not
 	 * @param person
 	 */
 
@@ -33,6 +34,9 @@ public class FileIODAO implements DAO {
 		return false;
 	}
 
+	/**
+	 * Write data into text file
+	 */
 	@Override
 	public void write(Student person) {
 		try {
@@ -58,6 +62,9 @@ public class FileIODAO implements DAO {
 		}
 	}
 
+	/**
+	 * Read data from text file and return as arraylist
+	 */
 	@Override
 	public ArrayList<Student> read() {
 		InputStream is = null;
@@ -92,7 +99,7 @@ public class FileIODAO implements DAO {
 		return result;
 	}
 	/**
-	 * delete all data
+	 * delete all data in text file
 	 */
 	@Override
 	public void delete() {
@@ -120,6 +127,9 @@ public class FileIODAO implements DAO {
 
 	}
 
+	/**
+	 * update one student data to another one which user input
+	 */
 	//TODO I want to find another way to write this code smarter and simpler
 	@Override
 	public void update(Student before, Student after) {
@@ -164,7 +174,7 @@ public class FileIODAO implements DAO {
 				file.createNewFile();
 			}
 			if (checkBeforeWritefile(file)) {
-				// Here false is to append the content to file
+				// Here false is to overwrite file
 				bw = new BufferedWriter(new FileWriter(file, false));
 				for (Student student : result) {
 					bw.write(student.getName());

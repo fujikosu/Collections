@@ -18,6 +18,12 @@ public class Controller {
 	ArrayList<Student> studentList;
 	private int index;
 
+	/**
+	 * Constructor 
+	 * set all button listeners and have Model and View 
+	 * @param storage Model in MVC pattern Db or File
+	 * @param view	View in MVC pattern
+	 */
 	public Controller(DAO storage, View view) {
 		this.storage = storage;
 		this.view = view;
@@ -35,12 +41,22 @@ public class Controller {
 		this.student = person;
 	}
 
+	/**
+	 * To set the function which delete all data in list in Db or File on Delete button
+	 * @author TEST
+	 *
+	 */
 	public class DeleteListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			storage.delete();
 		}
 	}
-
+	
+	/**
+	 * To set the function which show data list in Db or File on Show button
+	 * @author TEST
+	 *
+	 */
 	public class ReadListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			checkStorage(storage);
@@ -69,7 +85,7 @@ public class Controller {
 	}
 
 	/**
-	 * 
+	 * Add one student data at the bottom line of Db or File
 	 * @author TEST
 	 *
 	 */

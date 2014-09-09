@@ -1,13 +1,12 @@
 package com.kf.samples;
 
 /**
- * Make and return storage, which is Db or File
+ * Make and return storage, which is Db or File as DAO variable
  * @author TEST
  *
  */
 public class DAOFactory {
 	public static DAO getDAO(String DAOType){
-		//DAOType = null;
 		
 		if(DAOType == null){
 			System.out.println("You have to put Db or File as argument");

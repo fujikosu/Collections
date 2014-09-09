@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * 
+ * Class for Database (Mysql)
  * @author TEST
  *
  */
@@ -103,40 +103,44 @@ public class DbDAO implements DAO{
 		return personList;
 	}
 	
+	/**
+	 * connect to mysql
+	 * This is always called when you read and write
+	 */
 	private Connection connect(Connection con) throws ClassNotFoundException,
 			SQLException {
-		/**
-		 * connect to mysql
-		 * be always called when you read and write
-		 */
+
 		Class.forName(driver);
 		con = DriverManager.getConnection(url, user, password);
 		return con;
 	}
 
+	/**
+	 * Write data into person_table in mySql
+	 */
 	@Override
 	public void write(Student person) {
-		/**
-		 * Write data into person_table in mySql
-		 */
+
 		judgeProcess("insert into person.person_table(name,age) values(?,?);", 0, person);
 	}
-
+	
+	/**
+	 * Read all data of person_tabla from mySql
+	 */
 	@Override
 	public ArrayList<Student> read() {
-		/**
-		 * Read all data of person_tabla from mySql
-		 */
+
 		//not new OK?
 		ArrayList<Student> personList = judgeProcess("select name,age from person_table", 1, null);
 		return personList;
 	}
 
+	/**
+	 * Delete all data of person_table in mySql
+	 */
 	@Override
 	public void delete() {
-		/**
-		 * Delete all data of person_table in mySql
-		 */
+
 		judgeProcess("DELETE FROM person_table;", 2, null);
 		
 	}
@@ -148,7 +152,7 @@ public class DbDAO implements DAO{
 	}
 
 	/**
-	 * 
+	 * update one student data to another one which user input
 	 */
 	//TODO change list view when update is done         AND is used 
 	@Override
