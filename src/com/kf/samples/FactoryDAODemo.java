@@ -1,5 +1,10 @@
 package com.kf.samples;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import com.mysql.jdbc.Messages;
+
 public class FactoryDAODemo {
 	
 	/**
@@ -15,6 +20,11 @@ public class FactoryDAODemo {
 		}
 		else{
 			demo.testDao(args[0]);
+			String language = new String(args[1]);
+			String country = new String(args[2]);
+			Locale currentLocale = new Locale(language, country);
+			ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+			System.out.println(messages.getString("language"));
 		}
 	}
 
