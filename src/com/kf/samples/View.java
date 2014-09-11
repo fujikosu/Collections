@@ -3,6 +3,8 @@ package com.kf.samples;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -43,14 +45,19 @@ public class View{
 
 	/**
 	 * Show main window
+	 * @param country 
+	 * @param language 
 	 */
-	public View() {
-		mainFrame = new JFrame("Administration of person data");
+	public View(String language, String country) {
+		Locale currentLocale = new Locale(language, country);
+		ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+		
+		mainFrame = new JFrame(messages.getString("maintitle"));
 		mainFrame.setSize(300,270);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setLayout(null);
 		mainFrame.setLocationRelativeTo(null);
-		labelName = new JLabel("Type your name");
+		labelName = new JLabel(messages.getString("nameInput"));
 		labelName.setSize(200,30);
 		labelName.setLocation(20,20);
 		mainFrame.add(labelName);
@@ -60,7 +67,7 @@ public class View{
 		fieldName.setLocation(20,50);
 		mainFrame.add(fieldName);
 
-		labelName = new JLabel("Type your age");
+		labelName = new JLabel(messages.getString("ageInput"));
 		labelName.setSize(200,30);
 		labelName.setLocation(20,80);
 		mainFrame.add(labelName);
@@ -70,17 +77,17 @@ public class View{
 		fieldAge.setLocation(20,110);
 		mainFrame.add(fieldAge);
 		
-		buttonWrite = new JButton("Send");
+		buttonWrite = new JButton(messages.getString("send"));
 		buttonWrite.setSize(100,25);
 		buttonWrite.setLocation(20,135);
 		mainFrame.add(buttonWrite);
 		
-		buttonRead = new JButton("Show");
+		buttonRead = new JButton(messages.getString("show"));
 		buttonRead.setSize(100,25);
 		buttonRead.setLocation(140,135);
 		mainFrame.add(buttonRead);
 		
-		buttonDelete = new JButton("Delete");
+		buttonDelete = new JButton(messages.getString("delete"));
 		buttonDelete.setSize(100,25);
 		buttonDelete.setLocation(80,170);
 		mainFrame.add(buttonDelete, BorderLayout.SOUTH);
